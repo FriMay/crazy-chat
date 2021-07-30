@@ -1,0 +1,63 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.5.3'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+
+group 'may.code'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+/**
+ * Spring
+ */
+dependencies {
+    implementation group: 'org.springframework.boot', name: 'spring-boot-devtools'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis'
+
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-amqp'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-reactor-netty'
+    implementation group: 'org.springframework.amqp', name: 'spring-rabbit', version: '2.3.10'
+
+    implementation group: 'org.springframework', name: 'spring-websocket', version: '5.3.9'
+    implementation group: 'org.springframework', name: 'spring-messaging', version: '5.3.9'
+}
+
+/**
+ * Lombok
+ */
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    testCompileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
+}
+
+/**
+ * Other
+ */
+dependencies {
+    implementation group: 'redis.clients', name: 'jedis', version: '3.6.3'
+
+    implementation group: 'com.h2database', name: 'h2', version: '1.4.200'
+}
+
+/**
+ * Test
+ */
+dependencies {
+    testImplementation group: 'org.junit.platform', name: 'junit-platform-runner', version: '1.8.0-M1'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.7.2'
+
+    testImplementation group: 'org.springframework.security', name: 'spring-security-test'
+    testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+}
+
+test {
+    useJUnitPlatform()
+}
